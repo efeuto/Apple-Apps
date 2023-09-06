@@ -104,22 +104,6 @@ ON
 group by  Desc_Leng_Bracket
 ORDER by  AvgRating desc
 
---Check the top rated appp for each genre
-
-SELECT
-	prime_genre,
-    track_name,
-    user_rating
-FROM (
-	prime_genre,
-    track_name,
-    user_rating,
-  	RANK() OVER (PARTITION BY prime_genre ORDER BY user_rating DESC, rating_count_tot DESC) AS rank
-  FROM 
-  AppleStore
-  ) AS a
-  WHERE 
-  a.RANK = 1
   
   --Paid apps have better ratingsAppleStore
   
